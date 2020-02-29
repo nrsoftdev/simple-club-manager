@@ -6,3 +6,4 @@
 
 - Lavoro sul branch feature/auth per la creazione della mappa di login
 - Aggiunto Material (ng add @angular/material)
+- Aggiunto Bootstrap (npm install bootstrap)
