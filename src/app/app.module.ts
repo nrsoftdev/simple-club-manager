@@ -13,6 +13,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { AuthService } from './service/auth.service';
 import { MembersComponent } from './members/members.component';
+import { MatButtonModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+import { AngularMaterialModule } from './angular-material.module';
 
 
 @NgModule({
@@ -27,7 +31,8 @@ import { MembersComponent } from './members/members.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     BrowserAnimationsModule,
-    MatToolbarModule
+    AngularMaterialModule,
+    FlexLayoutModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

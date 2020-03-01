@@ -17,9 +17,10 @@ export class LoginComponent implements OnInit {
     this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
   }
 */
-  loginEmail()
+  loginEmail(userName,userPassword )
   {
-
+    console.log("loginEmail "  + userName + " " + userPassword);
+    this.authService.SignIn(userName, userPassword);
   }
 
   logout() {
