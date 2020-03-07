@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 import { environment } from '../environments/environment';
 import { LoginComponent } from './admin/login/login.component';
@@ -17,6 +18,7 @@ import { MatButtonModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AngularMaterialModule } from './angular-material.module';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 
 @NgModule({
@@ -32,9 +34,10 @@ import { AngularMaterialModule } from './angular-material.module';
     AngularFireAuthModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
+    AngularFireDatabaseModule,
     FlexLayoutModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

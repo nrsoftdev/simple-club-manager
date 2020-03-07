@@ -1,1 +1,11 @@
-<p>members works!</p>
+<ul>
+    <li *ngFor="let club of clubs | async">
+      {{ club.name }} - {{club.description}}
+    </li>
+    <ul>
+      <li *ngFor="let member of members | async">
+        {{ member.name }} {{member.surname}} - Socio dal {{member.memberSince}}
+      </li>
+  
+    </ul>
+</ul>
