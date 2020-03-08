@@ -1,11 +1,19 @@
 <mat-toolbar>  
   <mat-toolbar-row>
     <span>Simple Club Manager</span>
-  </mat-toolbar-row>
+  
+
+  <button mat-button [matMenuTriggerFor]="menu">Login</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item  routerLink="/admin/login">Login</button>
+    <button mat-menu-item  routerLink="/admin/signup">Sign Up</button>
+    <button mat-menu-item  routerLink="/admin/forgot-pwd">Forgot Password</button>
+    <button mat-menu-item  routerLink="/admin/logout">Logout</button>
+  </mat-menu>
+</mat-toolbar-row>
 
   <mat-toolbar-row>
-    <button mat-button  routerLink="/admin/login">Login</button>
-    <button mat-button  routerLink="/members">Membri</button>
+    <button mat-button  routerLink="/members">Members</button>
   </mat-toolbar-row>
 </mat-toolbar>
 

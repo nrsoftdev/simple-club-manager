@@ -1,0 +1,20 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>Forgot Password</mat-card-title>
+      </mat-card-header>
+  
+      <div class="example-form">
+        <mat-card-content>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Email" #userEmail>
+          </mat-form-field>
+  
+        </mat-card-content>
+        <button mat-stroked-button color="accent" class="btn-block" (click)="resetPwd(userEmail.value)">Reset Password</button>
+        <div><a routerLink="/admin/login">Go to Login</a></div>
+      </div>
+    </mat-card>
+  
+  </div>
