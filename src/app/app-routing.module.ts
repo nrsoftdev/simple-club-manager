@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/admin/login', pathMatch: 'full' },
   { path: 'admin/login', component: LoginComponent },
   { path: 'admin/logout', component: LogoutComponent },
-  { path: 'members', component: MembersComponent },
+  { path: 'members', component: MembersComponent, canActivate: [AuthGuard] },
   { path: 'admin/signup', component: SignupComponent },
   { path: 'admin/forgot-pwd', component: ForgotpwdComponent },
   { path: 'admin/verify-email', component: VerifyemailComponent }  
