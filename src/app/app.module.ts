@@ -15,6 +15,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
 import { AuthService } from './service/auth.service';
 import { MembersComponent } from './members/members.component';
+import { MemberComponent } from './member/member.component';
 import { MatButtonModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -24,6 +25,8 @@ import { SignupComponent } from './admin/signup/signup.component';
 import { ForgotpwdComponent } from './admin/forgotpwd/forgotpwd.component';
 import { VerifyemailComponent } from './admin/verifyemail/verifyemail.component';
 import { LogoutComponent } from './logout/logout.component';
+import { MemberService } from './service/member.service';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -31,6 +34,7 @@ import { LogoutComponent } from './logout/logout.component';
     AppComponent,
     LoginComponent,
     MembersComponent,
+    MemberComponent,
     SignupComponent,
     ForgotpwdComponent,
     VerifyemailComponent,
@@ -44,9 +48,10 @@ import { LogoutComponent } from './logout/logout.component';
     BrowserAnimationsModule,
     AngularMaterialModule,
     AngularFireDatabaseModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule
   ],
-  providers: [AuthService, AngularFirestore],
+  providers: [AuthService, AngularFirestore, MemberService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

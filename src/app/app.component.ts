@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from './service/auth.service';
+import { registerLocaleData } from '@angular/common';
+import localeIt from '@angular/common/locales/it';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +13,7 @@ export class AppComponent {
 
   constructor()
   {
-
+    registerLocaleData(localeIt, 'it-IT');    
   }
 
 
