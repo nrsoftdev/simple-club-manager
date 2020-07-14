@@ -23,9 +23,6 @@ export class LoginComponent implements OnInit {
     this.authService.SignIn(userName, userPassword);
   }
 
-  logout() {
-    //this.afAuth.auth.signOut();
-  }
 
   ngOnInit() {
   }

@@ -2,8 +2,8 @@ import { Injectable, NgZone } from '@angular/core';
 import { User } from "../shared/user";
 import { auth } from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
-//import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
+import { AngularFirestore,AngularFirestoreDocument } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +14,7 @@ export class AuthService {
 
   constructor(
     public afAuth: AngularFireAuth, // Inject Firebase auth service
+    private afs: AngularFirestore,
     public router: Router,  
     public ngZone: NgZone // NgZone service to remove outside scope warning
     ) 
@@ -46,6 +47,37 @@ export class AuthService {
       })
   }
 
+   // Sign up with email/password
+   SignUp(email, password) {
+    return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+      .then((result) => {
+        /* Call the SendVerificaitonMail() function when new user sign 
+        up and returns promise */
+        this.SendVerificationMail();
+        this.SetUserData(result.user);
+      }).catch((error) => {
+        window.alert(error.message)
+      })
+  }
+
+    // Reset Forggot password
+    ForgotPassword(passwordResetEmail) {
+      return this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail)
+      .then(() => {
+        window.alert('Password reset email sent, check your inbox.');
+      }).catch((error) => {
+        window.alert(error)
+      })
+    }
+
+    // Send email verfificaiton when new user sign up
+    SendVerificationMail() {
+      return this.afAuth.auth.currentUser.sendEmailVerification()
+      .then(() => {
+        this.router.navigate(['admin/verify-email']);
+      })
+    }
+
     // Returns true when user is looged in and email is verified
     get isLoggedIn(): boolean {
       const user = JSON.parse(localStorage.getItem('user'));
@@ -56,7 +88,7 @@ export class AuthService {
   sign up with username/password and sign in with social auth  
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
   SetUserData(user) {
-    /*
+    
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
     const userData: User = {
       uid: user.uid,
@@ -65,10 +97,11 @@ export class AuthService {
       photoURL: user.photoURL,
       emailVerified: user.emailVerified
     }
+    console.log(userData);
     return userRef.set(userData, {
       merge: true
     })
-    */
+    
   }
 
  // Auth logic to run auth providers
@@ -87,4 +120,12 @@ export class AuthService {
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider());
   }
+
+    // Sign out 
+    LogOut() {
+      return this.afAuth.auth.signOut().then(() => {
+        localStorage.removeItem('user');
+        this.router.navigate(['admin/login']);
+      })
+    }
 }

@@ -6,24 +6,39 @@ import { AppComponent } from './app.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 import { environment } from '../environments/environment';
 import { LoginComponent } from './admin/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatMenuModule} from '@angular/material/menu';
 import { AuthService } from './service/auth.service';
 import { MembersComponent } from './members/members.component';
+import { MemberComponent } from './member/member.component';
 import { MatButtonModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AngularMaterialModule } from './angular-material.module';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { SignupComponent } from './admin/signup/signup.component';
+import { ForgotpwdComponent } from './admin/forgotpwd/forgotpwd.component';
+import { VerifyemailComponent } from './admin/verifyemail/verifyemail.component';
+import { LogoutComponent } from './logout/logout.component';
+import { MemberService } from './service/member.service';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MembersComponent
+    MembersComponent,
+    MemberComponent,
+    SignupComponent,
+    ForgotpwdComponent,
+    VerifyemailComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -32,9 +47,11 @@ import { AngularMaterialModule } from './angular-material.module';
     AngularFireAuthModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    FlexLayoutModule
+    AngularFireDatabaseModule,
+    FlexLayoutModule,
+    FormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, AngularFirestore, MemberService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
