@@ -9,14 +9,12 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 })
 export class ClubService {
 
-  private clubsCollection: AngularFireList<Club>;
+  private clubsCollection: AngularFirestoreCollection<Club>;
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private firestore: AngularFirestore) { }
 
   getClubs(): Observable<Club[]> {
-
-    this.clubsCollection = this.db.list<Club>('Club');
-    // uso valueChanges perché mi bastano solo i dati senza i metadati
+    this.clubsCollection = this.firestore.collection<Club>('Club');
     return this.clubsCollection.valueChanges();
   }
 }

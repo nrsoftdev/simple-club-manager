@@ -10,16 +10,10 @@ import { AuthService } from 'src/app/service/auth.service';
 })
 export class LoginComponent implements OnInit {
 // public afAuth: AngularFireAuth
-  constructor( public authService: AuthService) { }
+  constructor(public authService: AuthService) { }
 
-  /*
-  loginGoogle() {
-    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
-  }
-*/
-  loginEmail(userName,userPassword )
-  {
-    console.log("loginEmail "  + userName + " " + userPassword);
+  loginEmail(userName: any, userPassword: any )  {
+    console.log(`loginEmail ${userName} ${userPassword}`);
     this.authService.SignIn(userName, userPassword);
   }
 
