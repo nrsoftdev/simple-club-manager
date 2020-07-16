@@ -9,11 +9,13 @@ import { SignupComponent } from './admin/signup/signup.component';
 import { ForgotpwdComponent } from './admin/forgotpwd/forgotpwd.component';
 import { VerifyemailComponent } from './admin/verifyemail/verifyemail.component';
 import { LogoutComponent } from './logout/logout.component';
+import { LoginGoogleComponent } from './login-google/login-google.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/admin/login', pathMatch: 'full' },
   { path: 'admin/login', component: LoginComponent },
+  { path: 'admin/loginG', component: LoginGoogleComponent },
   { path: 'admin/logout', component: LogoutComponent },
 
   // La guardia inibisce la navigazione

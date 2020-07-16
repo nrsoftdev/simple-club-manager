@@ -27,6 +27,8 @@ import { VerifyemailComponent } from './admin/verifyemail/verifyemail.component'
 import { LogoutComponent } from './logout/logout.component';
 import { MemberService } from './service/member.service';
 import { FormsModule } from '@angular/forms';
+import { LoginGoogleComponent } from './login-google/login-google.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -38,6 +40,7 @@ import { FormsModule } from '@angular/forms';
     SignupComponent,
     ForgotpwdComponent,
     VerifyemailComponent,
+    LoginGoogleComponent,
     LogoutComponent
   ],
   imports: [
@@ -49,7 +52,8 @@ import { FormsModule } from '@angular/forms';
     AngularMaterialModule,
     AngularFireDatabaseModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [AuthService, AngularFirestore, MemberService],
   bootstrap: [AppComponent]

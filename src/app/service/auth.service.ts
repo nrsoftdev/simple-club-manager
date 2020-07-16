@@ -17,8 +17,7 @@ export class AuthService {
     private afs: AngularFirestore,
     public router: Router,  
     public ngZone: NgZone // NgZone service to remove outside scope warning
-    ) 
-    {
+    ) {
 
       /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
@@ -122,7 +121,7 @@ export class AuthService {
   }
 
     // Sign out 
-    LogOut() {
+  LogOut() {
       return this.afAuth.auth.signOut().then(() => {
         localStorage.removeItem('user');
         this.router.navigate(['admin/login']);
