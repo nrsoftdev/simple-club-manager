@@ -8,6 +8,13 @@
             "script": "build",
             "group": "build",
             "problemMatcher": []
+        },
+        {
+            "type": "npm",
+            "script": "start",
+            "problemMatcher": [],
+            "label": "npm: start",
+            "detail": "ng serve"
         }
     ]
 }
