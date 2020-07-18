@@ -1,13 +1,25 @@
-# Simple CLub Manager
+# Simple Club Manager
+
+## Doing
+
+- Versione 0.0.1
+- BUG: La gestione dell'ID del membro è proprio una merda
+
+## ToDo
+
+- Completare le guard
+- Internazionalizzazione
 
 ## Unreleased
 
-### TODO
+### Changed
 
-- Completare le guard
+- Spostati i componenti logout e login-google dentro /admin.
 
 ### Added
 
+- Campo password reso `type=Password`
+- Modifica e cancellazione del membro del club
 - Lavoro sul branch feature/auth per la creazione della mappa di login
 - Aggiunto Material (ng add @angular/material)
 - Aggiunto Flex Layout (npm i -s @angular/flex-layout@8 @angular/cdk)

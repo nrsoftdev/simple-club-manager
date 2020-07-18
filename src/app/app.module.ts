@@ -24,10 +24,10 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { SignupComponent } from './admin/signup/signup.component';
 import { ForgotpwdComponent } from './admin/forgotpwd/forgotpwd.component';
 import { VerifyemailComponent } from './admin/verifyemail/verifyemail.component';
-import { LogoutComponent } from './logout/logout.component';
+import { LogoutComponent } from './admin/logout/logout.component';
 import { MemberService } from './service/member.service';
 import { FormsModule } from '@angular/forms';
-import { LoginGoogleComponent } from './login-google/login-google.component';
+import { LoginGoogleComponent } from './admin/login-google/login-google.component';
 import { HttpClientModule } from '@angular/common/http';
 
 

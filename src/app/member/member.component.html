@@ -1,5 +1,10 @@
 <div class="example-container">
-  <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+
+<p *ngIf="addId">Inserimento</p> 
+<p *ngIf="editId">Modifica</p> 
+<p *ngIf="deleteId">Cancellazione</p> 
+
+  <form (ngSubmit)="onSubmit()" #memberForm="ngForm">
     <mat-form-field appearance="fill">
       <mat-label>Name:</mat-label>
       <input matInput type="text" id="name" required [(ngModel)]="model.name" name="name" #name="ngModel">
@@ -10,12 +15,12 @@
       </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>Member since:</mat-label>
-        <input matInput [matDatepicker]="picker" id="memberSince" required [(ngModel)]="model.memberSinceDate" name="surname" #name="ngModel">
+        <input matInput [matDatepicker]="picker" id="memberSince" required [(ngModel)]="model.memberSinceDate" name="memberSince" #name="ngModel">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
       <br>
-      <button type="submit"  [disabled]="!heroForm.form.valid">Submit</button>
+      <button type="submit"  [disabled]="!memberForm.form.valid">Confirm</button>
 
 </form>      
 </div>

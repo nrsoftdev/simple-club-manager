@@ -1,9 +1,15 @@
-<mat-toolbar>  
+<mat-toolbar color="primary">  
+
   <mat-toolbar-row>
+
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>    
+
     <span>Simple Club Manager</span>
   
 
-  <button mat-button [matMenuTriggerFor]="menu">Login</button>
+  <!-- button color="primary" mat-button [matMenuTriggerFor]="menu">Login</button -->
   <mat-menu #menu="matMenu">
     <button mat-menu-item  routerLink="/admin/login">Login</button>
     <button mat-menu-item  routerLink="/admin/loginG">Login with Google</button>
@@ -11,10 +17,13 @@
     <button mat-menu-item  routerLink="/admin/forgot-pwd">Forgot Password</button>
     <button mat-menu-item  routerLink="/admin/logout">Logout</button>
   </mat-menu>
+<!--
 </mat-toolbar-row>
 
   <mat-toolbar-row>
-    <button mat-button  routerLink="/members">Members</button>
+--> 
+  <button mat-button routerLink="/clubs" disabled="true">Clubs</button>     
+    <button mat-button routerLink="/members">Members</button>
   </mat-toolbar-row>
 </mat-toolbar>
 
