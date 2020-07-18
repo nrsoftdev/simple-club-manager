@@ -9,6 +9,7 @@ import { registerLocaleData } from '@angular/common';
 
 import { MemberExt } from '../shared/memberext.model';
 import { MemberService } from '../service/member.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-members',
@@ -17,6 +18,8 @@ import { MemberService } from '../service/member.service';
 })
 export class MembersComponent implements OnInit, AfterContentInit  {
 
+  selectedOption = '';
+
   membersValues: Observable<Member[]>;
 
   members: MemberExt[] = [];
@@ -24,42 +27,57 @@ export class MembersComponent implements OnInit, AfterContentInit  {
 
   dataSource: MatTableDataSource<Member>;
 
-  displayedColumns: string[] = ['name', 'surname', 'memberSince'];
+  displayedColumns: string[] = ['name', 'surname', 'memberSince', 'actions'];
   clubs: Observable<Club[]>;
 
 
   ngAfterContentInit(): void {
     this.membersValues.subscribe((members) => {
+      let selectedOption = '';
       for (const member of members) {
 
-        const newMember = new MemberExt();
-        newMember.name = member.name;
-        newMember.surname = member.surname;
-
-
-        if(!member.memberSince) {
-          newMember.memberSinceDate = new Date(1900,1,1);
-        } else {
-          const parts = member.memberSince.split('-');
-          newMember.memberSinceDate = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
-          console.log(`Data  ${parts}`);
+        if (selectedOption === '') {
+          selectedOption = member.name;
         }
 
+        const newMember = new MemberExt();
+        newMember.set(member);
         this.members.push(newMember);
       }
       this.dataSource = new MatTableDataSource<MemberExt>(this.members);
+      this.selectedOption = selectedOption;
   });
  }
 
 
-  constructor(private memberService: MemberService, private clubService: ClubService) { }
+  constructor(private memberService: MemberService, private clubService: ClubService, private router: Router) { }
 
   ngOnInit() {
 
     this.membersValues = this.memberService.loadAll('1');
     this.clubs = this.clubService.getClubs();
 
+    window.localStorage.removeItem('deleteMemberId');
+    window.localStorage.removeItem('editMemberId');
+
 
   }
+
+  editMember(member: MemberExt) {
+    console.log('editMember');
+    console.log(member);
+    window.localStorage.removeItem('editMemberId');
+    window.localStorage.setItem('editMemberId', member.id);
+    this.router.navigate(['member']);
+  }
+
+  deleteMember(member: MemberExt) {
+    console.log('deleteMember');
+    console.log(member);
+    window.localStorage.removeItem('deleteMemberId');
+    window.localStorage.setItem('deleteMemberId', member.id);
+    this.router.navigate(['member']);
+  }
+
 
 }

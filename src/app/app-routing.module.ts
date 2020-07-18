@@ -8,8 +8,8 @@ import { MemberComponent } from './member/member.component';
 import { SignupComponent } from './admin/signup/signup.component';
 import { ForgotpwdComponent } from './admin/forgotpwd/forgotpwd.component';
 import { VerifyemailComponent } from './admin/verifyemail/verifyemail.component';
-import { LogoutComponent } from './logout/logout.component';
-import { LoginGoogleComponent } from './login-google/login-google.component';
+import { LogoutComponent } from './admin/logout/logout.component';
+import { LoginGoogleComponent } from './admin/login-google/login-google.component';
 
 
 const routes: Routes = [
